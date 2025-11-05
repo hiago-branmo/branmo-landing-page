@@ -53,6 +53,15 @@ export default async function Home() {
         <main role="main">
           <section className="container mx-auto px-4 py-20 text-center text-white" aria-labelledby="hero-title">
             <div className="max-w-4xl mx-auto">
+              {/* Logo destacado */}
+              <div className="mb-12 flex justify-center">
+                <img 
+                  src="/branmo-banner-dark.svg" 
+                  alt="Branmo CRM" 
+                  className="h-24 md:h-32 lg:h-40 w-auto hover:scale-105 transition-transform duration-300 filter drop-shadow-2xl"
+                />
+              </div>
+              
               <h1 id="hero-title" className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
                 {t.hero.title}
               </h1>

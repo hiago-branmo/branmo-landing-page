@@ -30,12 +30,21 @@ export function NavigationServer({ currentLanguage }: NavigationServerProps) {
   };
 
   return (
-    <nav className="bg-white/10 backdrop-blur-md border-b border-white/20" role="navigation" aria-label="Main navigation">
+    <nav className="bg-white/10 backdrop-blur-md border-b border-white/20 relative z-50" role="navigation" aria-label="Main navigation">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link href="/" className="text-2xl font-bold text-white hover:text-blue-200 transition-colors">
-            Branmo CRM
+          <Link href="/" className="flex items-center hover:opacity-90 transition-opacity">
+            <img 
+              src="/branmo-banner-dark.svg" 
+              alt="Branmo CRM" 
+              className="hidden sm:block h-8 w-auto"
+            />
+            <img 
+              src="/branmo-icon.png" 
+              alt="Branmo" 
+              className="sm:hidden h-8 w-8"
+            />
           </Link>
 
           {/* Desktop Navigation */}
@@ -83,7 +92,7 @@ export function NavigationServer({ currentLanguage }: NavigationServerProps) {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div id="mobile-menu" className="md:hidden py-4 border-t border-white/20">
+          <div id="mobile-menu" className="md:hidden py-4 border-t border-white/20 relative z-50">
             <div className="flex flex-col space-y-2">
               {navigationItems.map((item) => (
                 <Link

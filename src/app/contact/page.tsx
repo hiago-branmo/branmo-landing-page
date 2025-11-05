@@ -1,22 +1,27 @@
 import { Metadata } from 'next';
 import { Mail, MessageSquare, MapPin } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
+import { cookies } from 'next/headers';
+import { Language, translations } from '@/lib/i18n';
 
 export const metadata: Metadata = {
-  title: 'Contact Us - Branmo CRM',
-  description: 'Get in touch with the Branmo CRM team for support, partnerships, or inquiries.',
+  title: 'Entre em Contato - Branmo CRM',
+  description: 'Entre em contato com a equipe da Branmo CRM para suporte, parcerias ou consultas.',
   robots: 'index, follow',
 };
 
-export default function Contact() {
+export default async function Contact() {
+  const cookieStore = await cookies();
+  const currentLanguage = (cookieStore.get('language')?.value as Language) || 'pt-br';
+  const t = translations[currentLanguage];
   return (
     <div className="min-h-screen">
       <div className="container mx-auto px-4 py-20">
         <div className="max-w-4xl mx-auto">
           <div className="text-center text-white mb-12">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">Contact Us</h1>
+            <h1 className="text-4xl md:text-5xl font-bold mb-4">{t.contact.title}</h1>
             <p className="text-xl opacity-90">
-              We'd love to hear from you. Send us a message and we'll respond as soon as possible.
+              {t.contact.subtitle}
             </p>
           </div>
 
@@ -26,17 +31,17 @@ export default function Contact() {
               <Card className="bg-white/10 backdrop-blur-sm border-white/20 text-white">
                 <CardContent className="p-6">
                   <div className="flex items-center gap-4 mb-4">
-                    <Mail className="h-8 w-8 text-blue-200" />
+                    <MapPin className="h-8 w-8 text-blue-200" />
                     <div>
-                      <h3 className="text-xl font-semibold">Email Us</h3>
-                      <p className="text-white/80">Get in touch via email</p>
+                      <h3 className="text-xl font-semibold">{t.contact.info.office.title}</h3>
+                      <p className="text-white/80">{t.contact.info.office.subtitle}</p>
                     </div>
                   </div>
-                  <div className="space-y-2">
-                    <p><strong>General:</strong> hello@branmo.app</p>
-                    <p><strong>Support:</strong> support@branmo.app</p>
-                    <p><strong>Partnerships:</strong> partners@branmo.app</p>
-                    <p><strong>Press:</strong> press@branmo.app</p>
+                  <div>
+                    <p>{t.contact.info.office.location}</p>
+                    <p className="text-white/80 text-sm mt-1">
+                      {t.contact.info.office.description}
+                    </p>
                   </div>
                 </CardContent>
               </Card>
@@ -46,31 +51,13 @@ export default function Contact() {
                   <div className="flex items-center gap-4 mb-4">
                     <MessageSquare className="h-8 w-8 text-blue-200" />
                     <div>
-                      <h3 className="text-xl font-semibold">Social Media</h3>
-                      <p className="text-white/80">Follow us for updates</p>
-                    </div>
-                  </div>
-                  <div className="space-y-2">
-                    <p><strong>Twitter:</strong> @branmocrm</p>
-                    <p><strong>LinkedIn:</strong> /company/branmo</p>
-                    <p><strong>Facebook:</strong> /branmocrm</p>
-                  </div>
-                </CardContent>
-              </Card>
-
-              <Card className="bg-white/10 backdrop-blur-sm border-white/20 text-white">
-                <CardContent className="p-6">
-                  <div className="flex items-center gap-4 mb-4">
-                    <MapPin className="h-8 w-8 text-blue-200" />
-                    <div>
-                      <h3 className="text-xl font-semibold">Office</h3>
-                      <p className="text-white/80">Visit us in person</p>
+                      <h3 className="text-xl font-semibold">{t.contact.info.development.title}</h3>
+                      <p className="text-white/80">{t.contact.info.development.subtitle}</p>
                     </div>
                   </div>
                   <div>
-                    <p>São Paulo, Brazil</p>
-                    <p className="text-white/80 text-sm mt-1">
-                      Remote-first company with global presence
+                    <p className="text-white/90">
+                      {t.contact.info.development.description}
                     </p>
                   </div>
                 </CardContent>
@@ -80,12 +67,12 @@ export default function Contact() {
             {/* Contact Form */}
             <Card className="bg-white/95 backdrop-blur-sm">
               <CardContent className="p-6">
-                <h2 className="text-2xl font-bold text-gray-900 mb-6">Send us a message</h2>
+                <h2 className="text-2xl font-bold text-gray-900 mb-6">{t.contact.form.title}</h2>
                 <form className="space-y-4">
                   <div className="grid md:grid-cols-2 gap-4">
                     <div>
                       <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-1">
-                        First Name
+                        {t.contact.form.firstName}
                       </label>
                       <input
                         type="text"
@@ -96,7 +83,7 @@ export default function Contact() {
                     </div>
                     <div>
                       <label htmlFor="lastName" className="block text-sm font-medium text-gray-700 mb-1">
-                        Last Name
+                        {t.contact.form.lastName}
                       </label>
                       <input
                         type="text"
@@ -109,7 +96,7 @@ export default function Contact() {
 
                   <div>
                     <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-                      Email
+                      {t.contact.form.email}
                     </label>
                     <input
                       type="email"
@@ -121,7 +108,7 @@ export default function Contact() {
 
                   <div>
                     <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-1">
-                      Company (Optional)
+                      {t.contact.form.company}
                     </label>
                     <input
                       type="text"
@@ -132,25 +119,25 @@ export default function Contact() {
 
                   <div>
                     <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-1">
-                      Subject
+                      {t.contact.form.subject}
                     </label>
                     <select
                       id="subject"
                       className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                       required
                     >
-                      <option value="">Select a subject</option>
-                      <option value="general">General Inquiry</option>
-                      <option value="support">Support</option>
-                      <option value="partnership">Partnership</option>
-                      <option value="press">Press/Media</option>
-                      <option value="demo">Request Demo</option>
+                      <option value="">{t.contact.form.selectSubject}</option>
+                      <option value="general">{t.contact.form.subjects.general}</option>
+                      <option value="support">{t.contact.form.subjects.support}</option>
+                      <option value="partnership">{t.contact.form.subjects.partnership}</option>
+                      <option value="press">{t.contact.form.subjects.press}</option>
+                      <option value="demo">{t.contact.form.subjects.demo}</option>
                     </select>
                   </div>
 
                   <div>
                     <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
-                      Message
+                      {t.contact.form.message}
                     </label>
                     <textarea
                       id="message"
@@ -164,7 +151,7 @@ export default function Contact() {
                     type="submit"
                     className="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition-colors font-medium"
                   >
-                    Send Message
+                    {t.contact.form.submitButton}
                   </button>
                 </form>
               </CardContent>

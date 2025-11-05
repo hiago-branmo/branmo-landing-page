@@ -32,8 +32,12 @@ export function Footer({ language }: FooterProps) {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
           {/* Brand Column */}
           <div className="lg:col-span-2">
-            <Link href="/" className="text-2xl font-bold text-white mb-4 block">
-              Branmo CRM
+            <Link href="/" className="inline-block mb-4 hover:opacity-90 transition-opacity">
+              <img 
+                src="/branmo-banner-dark.svg" 
+                alt="Branmo CRM" 
+                className="h-10 w-auto"
+              />
             </Link>
             <p className="text-gray-300 mb-6 max-w-md">
               {t.footer.description}
@@ -140,8 +144,8 @@ export function Footer({ language }: FooterProps) {
               >
                 {t.footer.contact}
               </Link>
-              <Link 
-                href="/sitemap"
+              <Link
+                href="/site-map"
                 className="text-gray-400 hover:text-white transition-colors"
               >
                 {t.footer.sitemap}

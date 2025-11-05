@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     siteName: "Branmo CRM",
     images: [
       {
-        url: "/og-image.jpg",
+        url: "/branmo-icon.png",
         width: 1200,
         height: 630,
         alt: "Branmo CRM - WhatsApp Sales Automation",
@@ -71,6 +71,11 @@ export const metadata: Metadata = {
     capable: true,
     statusBarStyle: "default",
     title: "Branmo CRM",
+  },
+  icons: {
+    icon: "/branmo-icon.png",
+    apple: "/branmo-icon.png",
+    shortcut: "/branmo-icon.png",
   },
 };
 

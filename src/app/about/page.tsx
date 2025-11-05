@@ -1,41 +1,36 @@
 import { Metadata } from 'next';
+import Link from 'next/link';
 import { Users, Target, Lightbulb, Award } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 
 export const metadata: Metadata = {
-  title: 'About Us - Branmo CRM | WhatsApp Sales Automation',
-  description: 'Learn about Branmo CRM\'s mission to revolutionize WhatsApp business communications with AI-powered automation and sales tools.',
+  title: 'Sobre a Branmo - CRM WhatsApp com Automação IA',
+  description: 'Conheça a história da Branmo CRM, empresa de Belo Horizonte focada em revolucionar a gestão de conversas comerciais através da automação inteligente com IA.',
   robots: 'index, follow',
 };
 
 export default function About() {
-  const stats = [
-    { label: 'Companies Helped', value: '500+' },
-    { label: 'Messages Automated', value: '1M+' },
-    { label: 'Countries', value: '25+' },
-    { label: 'Team Members', value: '30+' },
-  ];
 
   const values = [
     {
       icon: Target,
-      title: 'Mission',
-      description: 'To democratize AI-powered sales automation for businesses of all sizes through WhatsApp.',
+      title: 'Nossa Missão',
+      description: 'Levar tecnologia acessível para empresas de todos os tamanhos, ajudando-as a evoluir e crescer através de soluções inovadoras.',
     },
     {
       icon: Lightbulb,
-      title: 'Innovation',
-      description: 'We constantly push the boundaries of what\'s possible with conversational AI and automation.',
+      title: 'Inovação Constante',
+      description: 'Utilizamos as mais novas tecnologias, especialmente IA, para criar soluções que realmente fazem a diferença no dia a dia das empresas.',
     },
     {
       icon: Users,
-      title: 'Customer-Centric',
-      description: 'Every feature we build is designed to solve real problems for real businesses.',
+      title: 'Pessoas em Primeiro Lugar',
+      description: 'Acreditamos que software e empresas são feitos de pessoas. Por isso, prezamos pelos nossos colaboradores e clientes acima de tudo.',
     },
     {
       icon: Award,
-      title: 'Excellence',
-      description: 'We strive for excellence in everything we do, from product development to customer support.',
+      title: 'Qualidade Máxima',
+      description: 'Fornecemos produtos nos quais nossos clientes podem confiar, sempre com os mais altos padrões de segurança e privacidade.',
     },
   ];
 
@@ -44,45 +39,33 @@ export default function About() {
         <div className="container mx-auto px-4 py-16">
         {/* Hero Section */}
         <div className="text-center text-white mb-16">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6">About Branmo CRM</h1>
+          <h1 className="text-4xl md:text-6xl font-bold mb-6">Sobre a Branmo</h1>
           <p className="text-xl md:text-2xl opacity-90 max-w-3xl mx-auto">
-            We're revolutionizing how businesses communicate and sell through WhatsApp with AI-powered automation.
+            A Branmo nasceu do sonho de criar uma empresa que resolve problemas reais usando tecnologia. 
+            Estamos revolucionando a gestão de conversas comerciais através da automação inteligente com IA.
           </p>
-        </div>
-
-        {/* Stats Section */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
-          {stats.map((stat, index) => (
-            <Card key={index} className="bg-white/10 backdrop-blur-sm border-white/20 text-center">
-              <CardContent className="p-6">
-                <div className="text-3xl md:text-4xl font-bold text-white mb-2">{stat.value}</div>
-                <div className="text-white/80">{stat.label}</div>
-              </CardContent>
-            </Card>
-          ))}
         </div>
 
         {/* Story Section */}
         <div className="max-w-4xl mx-auto mb-16">
-          <Card className="bg-white/95 backdrop-blur-sm">
+          <Card className="bg-white/10 backdrop-blur-sm border-white/20">
             <CardContent className="p-8">
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">Our Story</h2>
-              <div className="prose prose-lg max-w-none text-gray-700">
+              <h2 className="text-3xl font-bold text-white mb-6">Nossa História</h2>
+              <div className="prose prose-lg max-w-none text-white/90">
                 <p className="mb-4">
-                  Branmo CRM was born from a simple observation: businesses were struggling to keep up with the 
-                  growing demand for instant, personalized communication through WhatsApp. While WhatsApp became 
-                  the preferred communication channel for customers worldwide, businesses lacked the tools to 
-                  scale their operations effectively.
+                  A Branmo nasceu de uma paixão genuína por empreender e resolver problemas reais das empresas através da tecnologia. 
+                  Localizada em Belo Horizonte, MG, nossa empresa foi criada com o propósito de democratizar o acesso a soluções tecnológicas 
+                  avançadas, especialmente para negócios que precisam manter contato próximo com seus clientes.
                 </p>
                 <p className="mb-4">
-                  Founded in 2024 by a team of experienced entrepreneurs and engineers, Branmo CRM bridges this 
-                  gap by combining the power of artificial intelligence with the accessibility of WhatsApp's 
-                  official Business API.
+                  Identificamos que muitas empresas enfrentam dificuldades na gestão de conversas sobre vendas - desde as dúvidas iniciais 
+                  até o fechamento de negócios. Nossa solução automatiza e organiza essas interações, garantindo que os vendedores recebam 
+                  leads muito bem qualificados e tratados pela nossa inteligência artificial.
                 </p>
                 <p>
-                  Today, we're proud to serve hundreds of businesses across 25+ countries, helping them automate 
-                  their sales processes, convert more leads, and provide exceptional customer experiences through 
-                  the world's most popular messaging platform.
+                  Atualmente estamos em fase de desenvolvimento do MVP, focando na validação do interesse do mercado. Nosso diferencial 
+                  está na evolução rápida, flexibilidade, preço acessível e no uso das mais novas tecnologias, especialmente IA, 
+                  para transformar simples conversas em oportunidades valiosas de negócio.
                 </p>
               </div>
             </CardContent>
@@ -91,7 +74,7 @@ export default function About() {
 
         {/* Values Section */}
         <div className="mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-center text-white mb-12">Our Values</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-center text-white mb-12">Nossos Valores</h2>
           <div className="grid md:grid-cols-2 gap-8">
             {values.map((value, index) => {
               const IconComponent = value.icon;
@@ -108,28 +91,29 @@ export default function About() {
           </div>
         </div>
 
-        {/* Team Section */}
+        {/* Vision Section */}
         <div className="max-w-4xl mx-auto">
-          <Card className="bg-white/95 backdrop-blur-sm">
+          <Card className="bg-white/10 backdrop-blur-sm border-white/20">
             <CardContent className="p-8">
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">Join Our Team</h2>
-              <p className="text-gray-700 mb-6">
-                We're always looking for talented individuals who share our passion for innovation and 
-                customer success. If you're interested in joining our growing team, we'd love to hear from you.
+              <h2 className="text-3xl font-bold text-white mb-6">Nossa Visão para o Futuro</h2>
+              <p className="text-white/90 mb-6">
+                Em 5 anos, vemos a Branmo como uma marca forte e reconhecida no mercado, oferecendo produtos de software 
+                excepcionais que proporcionam escala real para nossos clientes. Queremos ser referência em transformação 
+                digital, sempre mantendo nosso compromisso com a qualidade máxima, segurança e privacidade dos dados.
               </p>
               <div className="flex flex-wrap gap-4">
-                <a 
+                <Link 
                   href="/contact"
-                  className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium"
+                  className="bg-white text-blue-600 px-6 py-3 rounded-lg hover:bg-gray-100 transition-colors font-medium"
                 >
-                  View Open Positions
-                </a>
-                <a 
-                  href="/contact"
-                  className="border border-blue-600 text-blue-600 px-6 py-3 rounded-lg hover:bg-blue-50 transition-colors font-medium"
+                  Entre em Contato
+                </Link>
+                <Link 
+                  href="/#email-capture"
+                  className="border border-white text-white px-6 py-3 rounded-lg hover:bg-white/10 transition-colors font-medium"
                 >
-                  Contact Us
-                </a>
+                  Junte-se à Lista de Espera
+                </Link>
               </div>
             </CardContent>
           </Card>

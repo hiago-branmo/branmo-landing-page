@@ -27,7 +27,7 @@ export function LanguageSwitcherServer({ currentLanguage }: LanguageSwitcherServ
   const currentLangData = languages.find(lang => lang.code === currentLanguage) || languages[0];
 
   return (
-    <div className="relative">
+    <div className="relative z-50">
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="flex items-center gap-2 text-white/80 hover:text-white transition-colors p-2 rounded-md hover:bg-white/10"
@@ -41,7 +41,7 @@ export function LanguageSwitcherServer({ currentLanguage }: LanguageSwitcherServ
       </button>
 
       {isOpen && (
-        <div className="absolute right-0 top-full mt-2 bg-white rounded-lg shadow-lg border border-gray-200 overflow-hidden z-50 min-w-[150px]">
+        <div className="absolute right-0 top-full mt-2 bg-white rounded-lg shadow-lg border border-gray-200 overflow-hidden z-[60] min-w-[150px]">
           {languages.map((lang) => (
             <button
               key={lang.code}
