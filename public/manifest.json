@@ -1,0 +1,25 @@
+{
+  "name": "Branmo CRM - WhatsApp Sales Automation",
+  "short_name": "Branmo CRM",
+  "description": "Transform your WhatsApp into a powerful sales machine with AI-powered automation.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#1e40af",
+  "theme_color": "#2563eb",
+  "orientation": "portrait-primary",
+  "categories": ["business", "productivity"],
+  "lang": "en",
+  "dir": "ltr",
+  "icons": [
+    {
+      "src": "/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-512x512.png", 
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
