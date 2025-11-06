@@ -5,6 +5,8 @@ import { NavigationServer } from "@/components/NavigationServer";
 import { Footer } from "@/components/Footer";
 import { cookies } from "next/headers";
 import { Language } from "@/lib/i18n";
+import { Analytics } from "@vercel/analytics/next"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -99,6 +101,8 @@ export default async function RootLayout({
           className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gradient-to-br from-background via-[#f7e7df] to-[#EE7141]/10 min-h-screen`}
         >
           <NavigationServer currentLanguage={currentLanguage} />
+          <SpeedInsights />
+          <Analytics />
           {children}
           <Footer language={currentLanguage} />
         </body>
