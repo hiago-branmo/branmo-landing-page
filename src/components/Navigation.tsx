@@ -37,7 +37,7 @@ export function Navigation({ currentLanguage, onLanguageChange }: NavigationProp
           {/* Logo */}
           <Link 
             href="/"
-            className="text-2xl font-bold text-white hover:text-blue-200 transition-colors"
+            className="text-2xl font-bold text-foreground hover:text-primary transition-colors"
           >
             Branmo CRM
           </Link>
@@ -48,10 +48,10 @@ export function Navigation({ currentLanguage, onLanguageChange }: NavigationProp
               <Link
                 key={item.href}
                 href={item.href}
-                className={`text-white transition-colors ${
+                className={`text-foreground transition-colors ${
                   isActive(item.href)
-                    ? 'text-blue-200 font-medium'
-                    : 'hover:text-blue-200'
+                    ? 'text-primary font-medium'
+                    : 'hover:text-primary'
                 }`}
               >
                 {item.label}
@@ -61,7 +61,7 @@ export function Navigation({ currentLanguage, onLanguageChange }: NavigationProp
             {/* CTA Button */}
             <Link
               href="/#email-capture"
-              className="bg-white text-blue-600 px-6 py-2 rounded-lg hover:bg-gray-100 transition-colors font-medium"
+              className="bg-primary text-primary-foreground px-6 py-2 rounded-lg hover:bg-background hover:text-primary transition-colors font-medium"
             >
               {t.navigation.getEarlyAccess}
             </Link>
@@ -98,11 +98,7 @@ export function Navigation({ currentLanguage, onLanguageChange }: NavigationProp
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`text-white py-2 transition-colors ${
-                    isActive(item.href)
-                      ? 'text-blue-200 font-medium'
-                      : 'hover:text-blue-200'
-                  }`}
+                  className={`text-white py-2 transition-colors`}
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {item.label}

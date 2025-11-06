@@ -36,7 +36,7 @@ export function NavigationServer({ currentLanguage }: NavigationServerProps) {
           {/* Logo */}
           <Link href="/" className="flex items-center hover:opacity-90 transition-opacity">
             <img 
-              src="/branmo-banner-dark.svg" 
+              src="/branmo-banner.svg" 
               alt="Branmo CRM" 
               className="hidden sm:block h-8 w-auto"
             />
@@ -55,8 +55,8 @@ export function NavigationServer({ currentLanguage }: NavigationServerProps) {
                 href={item.href}
                 className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
                   isActive(item.href)
-                    ? "bg-white/20 text-white"
-                    : "text-white/80 hover:text-white hover:bg-white/10"
+                    ? "bg-primary/10 text-primary"
+                    : "text-foreground/80 hover:text-primary hover:bg-background/10"
                 }`}
                 aria-current={isActive(item.href) ? "page" : undefined}
               >
@@ -68,7 +68,7 @@ export function NavigationServer({ currentLanguage }: NavigationServerProps) {
             
             <Link
               href="/#email-capture"
-              className="bg-white text-blue-600 px-6 py-2 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
+              className="bg-primary text-primary-foreground px-6 py-2 rounded-lg font-semibold hover:bg-background hover:text-primary transition-colors"
             >
               {t.navigation.getEarlyAccess}
             </Link>
@@ -76,7 +76,7 @@ export function NavigationServer({ currentLanguage }: NavigationServerProps) {
 
           {/* Mobile menu button */}
           <button
-            className="md:hidden text-white hover:text-blue-200 transition-colors p-2"
+            className="md:hidden text-foreground hover:text-primary transition-colors p-2"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-expanded={isMenuOpen}
             aria-controls="mobile-menu"
@@ -100,8 +100,8 @@ export function NavigationServer({ currentLanguage }: NavigationServerProps) {
                   href={item.href}
                   className={`px-3 py-2 rounded-md text-base font-medium transition-colors ${
                     isActive(item.href)
-                      ? "bg-white/20 text-white"
-                      : "text-white/80 hover:text-white hover:bg-white/10"
+                      ? "bg-primary/10 text-primary"
+                      : "text-foreground/80 hover:text-primary hover:bg-background/10"
                   }`}
                   onClick={() => setIsMenuOpen(false)}
                   aria-current={isActive(item.href) ? "page" : undefined}

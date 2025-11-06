@@ -18,9 +18,9 @@ export default async function Contact() {
     <div className="min-h-screen">
       <div className="container mx-auto px-4 py-20">
         <div className="max-w-4xl mx-auto">
-          <div className="text-center text-white mb-12">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">{t.contact.title}</h1>
-            <p className="text-xl opacity-90">
+          <div className="text-center text-foreground mb-12">
+            <h1 className="text-4xl md:text-5xl font-bold mb-4 text-foreground">{t.contact.title}</h1>
+            <p className="text-xl opacity-90 text-muted-foreground">
               {t.contact.subtitle}
             </p>
           </div>
@@ -28,35 +28,35 @@ export default async function Contact() {
           <div className="grid md:grid-cols-2 gap-8">
             {/* Contact Information */}
             <div className="space-y-6">
-              <Card className="bg-white/10 backdrop-blur-sm border-white/20 text-white">
+              <Card className="bg-background/90 backdrop-blur-sm border-border text-foreground">
                 <CardContent className="p-6">
                   <div className="flex items-center gap-4 mb-4">
-                    <MapPin className="h-8 w-8 text-blue-200" />
+                    <MapPin className="h-8 w-8 text-primary/70" />
                     <div>
-                      <h3 className="text-xl font-semibold">{t.contact.info.office.title}</h3>
-                      <p className="text-white/80">{t.contact.info.office.subtitle}</p>
+                      <h3 className="text-xl font-semibold text-foreground">{t.contact.info.office.title}</h3>
+                      <p className="text-muted-foreground">{t.contact.info.office.subtitle}</p>
                     </div>
                   </div>
                   <div>
-                    <p>{t.contact.info.office.location}</p>
-                    <p className="text-white/80 text-sm mt-1">
+                    <p className="text-foreground">{t.contact.info.office.location}</p>
+                    <p className="text-muted-foreground text-sm mt-1">
                       {t.contact.info.office.description}
                     </p>
                   </div>
                 </CardContent>
               </Card>
 
-              <Card className="bg-white/10 backdrop-blur-sm border-white/20 text-white">
+              <Card className="bg-background/90 backdrop-blur-sm border-border text-foreground">
                 <CardContent className="p-6">
                   <div className="flex items-center gap-4 mb-4">
-                    <MessageSquare className="h-8 w-8 text-blue-200" />
+                    <MessageSquare className="h-8 w-8 text-primary/70" />
                     <div>
-                      <h3 className="text-xl font-semibold">{t.contact.info.development.title}</h3>
-                      <p className="text-white/80">{t.contact.info.development.subtitle}</p>
+                      <h3 className="text-xl font-semibold text-foreground">{t.contact.info.development.title}</h3>
+                      <p className="text-muted-foreground">{t.contact.info.development.subtitle}</p>
                     </div>
                   </div>
                   <div>
-                    <p className="text-white/90">
+                    <p className="text-muted-foreground">
                       {t.contact.info.development.description}
                     </p>
                   </div>

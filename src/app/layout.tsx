@@ -73,9 +73,9 @@ export const metadata: Metadata = {
     title: "Branmo CRM",
   },
   icons: {
-    icon: "/branmo-icon.png",
-    apple: "/branmo-icon.png",
-    shortcut: "/branmo-icon.png",
+    icon: "/logo.svg",
+    apple: "/logo.svg",
+    shortcut: "/logo.svg", 
   },
 };
 
@@ -89,14 +89,14 @@ export default async function RootLayout({
   const currentLanguage = (cookieStore.get('language')?.value as Language) || "en";
   
   return (
-    <html lang={currentLanguage === "pt-br" ? "pt" : currentLanguage}>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gradient-to-br from-blue-600 via-purple-600 to-blue-800 min-h-screen`}
-      >
-        <NavigationServer currentLanguage={currentLanguage} />
-        {children}
-        <Footer language={currentLanguage} />
-      </body>
-    </html>
+      <html lang={currentLanguage === "pt-br" ? "pt" : currentLanguage}>
+        <body
+          className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gradient-to-br from-background via-[#f7e7df] to-[#EE7141]/10 min-h-screen`}
+        >
+          <NavigationServer currentLanguage={currentLanguage} />
+          {children}
+          <Footer language={currentLanguage} />
+        </body>
+      </html>
   );
 }

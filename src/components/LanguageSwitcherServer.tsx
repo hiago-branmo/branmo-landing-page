@@ -30,7 +30,7 @@ export function LanguageSwitcherServer({ currentLanguage }: LanguageSwitcherServ
     <div className="relative z-50">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-2 text-white/80 hover:text-white transition-colors p-2 rounded-md hover:bg-white/10"
+  className="flex items-center gap-2 text-foreground/80 hover:text-primary transition-colors p-2 rounded-md hover:bg-background/10"
         aria-label="Change language"
         aria-expanded={isOpen}
       >
@@ -46,8 +46,8 @@ export function LanguageSwitcherServer({ currentLanguage }: LanguageSwitcherServ
             <button
               key={lang.code}
               onClick={() => handleLanguageChange(lang.code)}
-              className={`w-full px-4 py-2 text-left text-sm hover:bg-gray-50 transition-colors flex items-center gap-2 ${
-                lang.code === currentLanguage ? "bg-blue-50 text-blue-600 font-medium" : "text-gray-700"
+              className={`w-full px-4 py-2 text-left text-sm hover:bg-background/10 transition-colors flex items-center gap-2 ${
+                lang.code === currentLanguage ? "bg-primary/10 text-primary font-medium" : "text-muted-foreground"
               }`}
             >
               <span>{lang.flag}</span>

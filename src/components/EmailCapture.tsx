@@ -90,7 +90,7 @@ export function EmailCapture({ translations, language }: EmailCaptureProps) {
       <CardContent className="pt-6">
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           <div className="space-y-2">
-            <Label htmlFor="email" className="text-gray-700">
+            <Label htmlFor="email" className="text-foreground">
               {translations.emailCapture.placeholder}
             </Label>
             <Input
@@ -102,7 +102,7 @@ export function EmailCapture({ translations, language }: EmailCaptureProps) {
               disabled={status === "loading"}
             />
             {errors.email && (
-              <div className="flex items-center gap-2 text-red-600 text-sm">
+              <div className="flex items-center gap-2 text-destructive text-sm">
                 <AlertCircle className="h-4 w-4" />
                 {translations.emailCapture.error}
               </div>
@@ -111,7 +111,7 @@ export function EmailCapture({ translations, language }: EmailCaptureProps) {
           
           <Button 
             type="submit" 
-            className="w-full bg-blue-600 hover:bg-blue-700 text-white"
+            className="w-full bg-primary hover:bg-primary/90 text-primary-foreground"
             disabled={status === "loading"}
           >
             {status === "loading" ? "..." : translations.emailCapture.button}

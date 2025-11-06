@@ -29,22 +29,22 @@ export function SkipLinks() {
 
   return (
     <nav aria-label="Skip navigation links" className="sr-only focus-within:not-sr-only">
-      <div className="fixed top-0 left-0 z-50 bg-blue-600 text-white p-2 space-x-2">
+  <div className="fixed top-0 left-0 z-50 bg-primary text-primary-foreground p-2 space-x-2">
         <button
           onClick={skipToMain}
-          className="bg-white text-blue-600 px-3 py-1 rounded focus:ring-2 focus:ring-blue-300"
+          className="bg-background text-primary px-3 py-1 rounded focus:ring-2 focus:ring-primary/50"
         >
           Skip to main content
         </button>
         <button
           onClick={skipToNav}
-          className="bg-white text-blue-600 px-3 py-1 rounded focus:ring-2 focus:ring-blue-300"
+          className="bg-white text-blue-600 px-3 py-1 rounded focus:ring-2 "
         >
           Skip to navigation
         </button>
         <button
           onClick={skipToContent}
-          className="bg-white text-blue-600 px-3 py-1 rounded focus:ring-2 focus:ring-blue-300"
+          className="bg-white text-blue-600 px-3 py-1 rounded focus:ring-2 "
         >
           Skip to signup
         </button>

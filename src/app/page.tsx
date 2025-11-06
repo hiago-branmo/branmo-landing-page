@@ -51,33 +51,33 @@ export default async function Home() {
 
         {/* Hero Section */}
         <main role="main">
-          <section className="container mx-auto px-4 py-20 text-center text-white" aria-labelledby="hero-title">
+          <section className="container mx-auto px-4 py-20 text-center text-foreground" aria-labelledby="hero-title">
             <div className="max-w-4xl mx-auto">
               {/* Logo destacado */}
               <div className="mb-12 flex justify-center">
                 <img 
-                  src="/branmo-banner-dark.svg" 
+                  src="/branmo-banner.svg" 
                   alt="Branmo CRM" 
                   className="h-24 md:h-32 lg:h-40 w-auto hover:scale-105 transition-transform duration-300 filter drop-shadow-2xl"
                 />
               </div>
               
-              <h1 id="hero-title" className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+              <h1 id="hero-title" className="text-4xl md:text-6xl font-bold mb-6 leading-tight text-foreground">
                 {t.hero.title}
               </h1>
-          <p className="text-xl md:text-2xl mb-8 opacity-90 leading-relaxed">
+          <p className="text-xl md:text-2xl mb-8 opacity-90 leading-relaxed text-muted-foreground">
             {t.hero.subtitle}
           </p>
-          <HeroButton className="bg-white text-blue-600 hover:bg-gray-100 font-semibold px-8 py-3 text-lg">
+          <HeroButton className="bg-primary text-primary-foreground hover:bg-background hover:text-primary font-semibold px-8 py-3 text-lg">
             {t.hero.cta}
           </HeroButton>
             </div>
           </section>
 
           {/* Features Section */}
-          <section className="py-20 bg-white/5 backdrop-blur-sm" aria-labelledby="features-title">
+          <section className="py-20 bg-primary/5 backdrop-blur-sm" aria-labelledby="features-title">
             <div className="container mx-auto px-4">
-              <h2 id="features-title" className="text-3xl md:text-4xl font-bold text-center text-white mb-16">
+              <h2 id="features-title" className="text-3xl md:text-4xl font-bold text-center text-foreground mb-16">
                 {t.features.title}
               </h2>
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
@@ -86,14 +86,14 @@ export default async function Home() {
               return (
                 <Card
                   key={index}
-                  className="bg-white/10 backdrop-blur-sm border-white/20 text-white hover:bg-white/20 transition-all duration-300"
+                  className="bg-background/90 backdrop-blur-sm border border-border shadow-sm hover:shadow-lg hover:-translate-y-1 hover:border-primary transition-all duration-300 text-foreground"
                 >
                   <CardContent className="p-6">
-                    <IconComponent className="h-12 w-12 mb-4 text-blue-200" aria-hidden="true" />
-                    <h3 className="text-xl font-semibold mb-3">
+                    <IconComponent className="h-12 w-12 mb-4 text-primary/70" aria-hidden="true" />
+                    <h3 className="text-xl font-semibold mb-3 text-foreground">
                       {feature.title}
                     </h3>
-                    <p className="text-white/80 leading-relaxed">
+                    <p className="text-muted-foreground leading-relaxed">
                       {feature.description}
                     </p>
                   </CardContent>
@@ -107,12 +107,12 @@ export default async function Home() {
           {/* Email Capture Section */}
           <section id="email-capture" className="py-20" aria-labelledby="email-title">
             <div className="container mx-auto px-4">
-              <div className="max-w-2xl mx-auto text-center text-white mb-12">
-                <Mail className="h-16 w-16 mx-auto mb-6 text-blue-200" aria-hidden="true" />
-                <h2 id="email-title" className="text-3xl md:text-4xl font-bold mb-4">
+              <div className="max-w-2xl mx-auto text-center text-foreground mb-12">
+                <Mail className="h-16 w-16 mx-auto mb-6 text-primary/70" aria-hidden="true" />
+                <h2 id="email-title" className="text-3xl md:text-4xl font-bold mb-4 text-foreground">
                   {t.emailCapture.title}
                 </h2>
-            <p className="text-xl opacity-90">
+            <p className="text-xl opacity-90 text-muted-foreground">
               {t.emailCapture.subtitle}
             </p>
               </div>

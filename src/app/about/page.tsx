@@ -36,11 +36,11 @@ export default function About() {
 
   return (
     <div className="min-h-screen">
-        <div className="container mx-auto px-4 py-16">
+      <div className="container mx-auto px-4 py-16">
         {/* Hero Section */}
-        <div className="text-center text-white mb-16">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6">Sobre a Branmo</h1>
-          <p className="text-xl md:text-2xl opacity-90 max-w-3xl mx-auto">
+        <div className="text-center text-foreground mb-16">
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 text-foreground">Sobre a Branmo</h1>
+          <p className="text-xl md:text-2xl opacity-90 max-w-3xl mx-auto text-muted-foreground">
             A Branmo nasceu do sonho de criar uma empresa que resolve problemas reais usando tecnologia. 
             Estamos revolucionando a gestão de conversas comerciais através da automação inteligente com IA.
           </p>
@@ -48,77 +48,77 @@ export default function About() {
 
         {/* Story Section */}
         <div className="max-w-4xl mx-auto mb-16">
-          <Card className="bg-white/10 backdrop-blur-sm border-white/20">
-            <CardContent className="p-8">
-              <h2 className="text-3xl font-bold text-white mb-6">Nossa História</h2>
-              <div className="prose prose-lg max-w-none text-white/90">
-                <p className="mb-4">
-                  A Branmo nasceu de uma paixão genuína por empreender e resolver problemas reais das empresas através da tecnologia. 
-                  Localizada em Belo Horizonte, MG, nossa empresa foi criada com o propósito de democratizar o acesso a soluções tecnológicas 
-                  avançadas, especialmente para negócios que precisam manter contato próximo com seus clientes.
-                </p>
-                <p className="mb-4">
-                  Identificamos que muitas empresas enfrentam dificuldades na gestão de conversas sobre vendas - desde as dúvidas iniciais 
-                  até o fechamento de negócios. Nossa solução automatiza e organiza essas interações, garantindo que os vendedores recebam 
-                  leads muito bem qualificados e tratados pela nossa inteligência artificial.
-                </p>
-                <p>
-                  Atualmente estamos em fase de desenvolvimento do MVP, focando na validação do interesse do mercado. Nosso diferencial 
-                  está na evolução rápida, flexibilidade, preço acessível e no uso das mais novas tecnologias, especialmente IA, 
-                  para transformar simples conversas em oportunidades valiosas de negócio.
-                </p>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
+              <Card className="bg-background/90 backdrop-blur-sm border-border">
+                <CardContent className="p-8">
+                  <h2 className="text-3xl font-bold text-foreground mb-6">Nossa História</h2>
+                  <div className="prose prose-lg max-w-none text-muted-foreground">
+                    <p className="mb-4">
+                      A Branmo nasceu de uma paixão genuína por empreender e resolver problemas reais das empresas através da tecnologia. 
+                      Localizada em Belo Horizonte, MG, nossa empresa foi criada com o propósito de democratizar o acesso a soluções tecnológicas 
+                      avançadas, especialmente para negócios que precisam manter contato próximo com seus clientes.
+                    </p>
+                    <p className="mb-4">
+                      Identificamos que muitas empresas enfrentam dificuldades na gestão de conversas sobre vendas - desde as dúvidas iniciais 
+                      até o fechamento de negócios. Nossa solução automatiza e organiza essas interações, garantindo que os vendedores recebam 
+                      leads muito bem qualificados e tratados pela nossa inteligência artificial.
+                    </p>
+                    <p>
+                      Atualmente estamos em fase de desenvolvimento do MVP, focando na validação do interesse do mercado. Nosso diferencial 
+                      está na evolução rápida, flexibilidade, preço acessível e no uso das mais novas tecnologias, especialmente IA, 
+                      para transformar simples conversas em oportunidades valiosas de negócio.
+                    </p>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
 
-        {/* Values Section */}
-        <div className="mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-center text-white mb-12">Nossos Valores</h2>
-          <div className="grid md:grid-cols-2 gap-8">
-            {values.map((value, index) => {
-              const IconComponent = value.icon;
-              return (
-                <Card key={index} className="bg-white/10 backdrop-blur-sm border-white/20 text-white">
-                  <CardContent className="p-6">
-                    <IconComponent className="h-12 w-12 text-blue-200 mb-4" />
-                    <h3 className="text-xl font-semibold mb-3">{value.title}</h3>
-                    <p className="text-white/80">{value.description}</p>
-                  </CardContent>
-                </Card>
-              );
-            })}
+            {/* Values Section */}
+            <div className="mb-16">
+              <h2 className="text-3xl md:text-4xl font-bold text-center text-foreground mb-12">Nossos Valores</h2>
+              <div className="grid md:grid-cols-2 gap-8">
+                {values.map((value, index) => {
+                  const IconComponent = value.icon;
+                  return (
+                    <Card key={index} className="bg-background/90 backdrop-blur-sm border-border text-foreground">
+                      <CardContent className="p-6">
+                        <IconComponent className="h-12 w-12 text-primary/70 mb-4" />
+                        <h3 className="text-xl font-semibold mb-3">{value.title}</h3>
+                        <p className="text-muted-foreground">{value.description}</p>
+                      </CardContent>
+                    </Card>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Vision Section */}
+            <div className="max-w-4xl mx-auto">
+              <Card className="bg-background/90 backdrop-blur-sm border-border">
+                <CardContent className="p-8">
+                  <h2 className="text-3xl font-bold text-foreground mb-6">Nossa Visão para o Futuro</h2>
+                  <p className="text-muted-foreground mb-6">
+                    Em 5 anos, vemos a Branmo como uma marca forte e reconhecida no mercado, oferecendo produtos de software 
+                    excepcionais que proporcionam escala real para nossos clientes. Queremos ser referência em transformação 
+                    digital, sempre mantendo nosso compromisso com a qualidade máxima, segurança e privacidade dos dados.
+                  </p>
+                  <div className="flex flex-wrap gap-4">
+                    <Link 
+                      href="/contact"
+                      className="bg-primary text-primary-foreground px-6 py-3 rounded-lg shadow hover:bg-background hover:text-primary transition-colors font-medium"
+                    >
+                      Entre em Contato
+                    </Link>
+                    <Link 
+                      href="/#email-capture"
+                      className="bg-background text-foreground px-6 py-3 rounded-lg shadow hover:bg-background/10 transition-colors font-medium"
+                    >
+                      Junte-se à Lista de Espera
+                    </Link>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
           </div>
         </div>
-
-        {/* Vision Section */}
-        <div className="max-w-4xl mx-auto">
-          <Card className="bg-white/10 backdrop-blur-sm border-white/20">
-            <CardContent className="p-8">
-              <h2 className="text-3xl font-bold text-white mb-6">Nossa Visão para o Futuro</h2>
-              <p className="text-white/90 mb-6">
-                Em 5 anos, vemos a Branmo como uma marca forte e reconhecida no mercado, oferecendo produtos de software 
-                excepcionais que proporcionam escala real para nossos clientes. Queremos ser referência em transformação 
-                digital, sempre mantendo nosso compromisso com a qualidade máxima, segurança e privacidade dos dados.
-              </p>
-              <div className="flex flex-wrap gap-4">
-                <Link 
-                  href="/contact"
-                  className="bg-white text-blue-600 px-6 py-3 rounded-lg hover:bg-gray-100 transition-colors font-medium"
-                >
-                  Entre em Contato
-                </Link>
-                <Link 
-                  href="/#email-capture"
-                  className="border border-white text-white px-6 py-3 rounded-lg hover:bg-white/10 transition-colors font-medium"
-                >
-                  Junte-se à Lista de Espera
-                </Link>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-      </div>
-    </div>
   );
-}
+} 
