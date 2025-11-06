@@ -1,5 +1,23 @@
 User-agent: *
+Disallow: /admin/
+Disallow: /api/
+Disallow: /private/
+Disallow: /tmp/
 Allow: /
 
 # Sitemap
-Sitemap: https://branmo.app/sitemap.xml
+Sitemap: https://www.branmo.app/sitemap.xml
+Host: https://www.branmo.app
+
+# Regras para bots comuns
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Permitir recursos públicos
+Allow: /public/
+Allow: /static/
+
+# Fim do arquivo robots.txt

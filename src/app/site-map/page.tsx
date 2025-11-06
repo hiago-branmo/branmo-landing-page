@@ -115,9 +115,9 @@ export default async function Sitemap() {
       <div className="container mx-auto px-4 py-20">
         <div className="max-w-6xl mx-auto">
           {/* Header */}
-          <div className="text-center text-white mb-12">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">{sitemapTitle}</h1>
-            <p className="text-xl opacity-90 max-w-3xl mx-auto">
+          <div className="text-center text-foreground mb-12">
+            <h1 className="text-4xl md:text-5xl font-bold mb-4 text-primary">{sitemapTitle}</h1>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               {sitemapSubtitle}
             </p>
           </div>
@@ -127,12 +127,12 @@ export default async function Sitemap() {
             {sitePages.map((section, sectionIndex) => {
               const IconComponent = section.icon;
               return (
-                <Card key={sectionIndex} className="bg-white/10 backdrop-blur-sm border-white/20">
+                <Card key={sectionIndex} className="bg-background/80 backdrop-blur-sm border-border">
                   <CardContent className="p-6">
                     {/* Section Header */}
                     <div className="flex items-center gap-3 mb-6">
-                      <IconComponent className="h-6 w-6 text-blue-200" />
-                      <h2 className="text-2xl font-semibold text-white">{section.category}</h2>
+                      <IconComponent className="h-6 w-6 text-primary" />
+                      <h2 className="text-2xl font-semibold text-foreground">{section.category}</h2>
                     </div>
 
                     {/* Pages in Section */}
@@ -143,14 +143,14 @@ export default async function Sitemap() {
                           href={page.href}
                           className="group"
                         >
-                          <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg p-4 hover:bg-white/10 hover:border-white/20 transition-all duration-200">
-                            <h3 className="text-lg font-semibold text-white group-hover:text-blue-200 transition-colors mb-2">
+                          <div className="bg-background/60 backdrop-blur-sm border border-border rounded-lg p-4 hover:bg-background/80 hover:border-primary transition-all duration-200">
+                            <h3 className="text-lg font-semibold text-foreground group-hover:text-primary transition-colors mb-2">
                               {page.title}
                             </h3>
-                            <p className="text-white/70 text-sm group-hover:text-white/90 transition-colors">
+                            <p className="text-muted-foreground text-sm group-hover:text-foreground transition-colors">
                               {page.description}
                             </p>
-                            <div className="mt-3 text-blue-200 text-sm font-medium group-hover:text-blue-100">
+                            <div className="mt-3 text-primary text-sm font-medium group-hover:text-primary/80">
                               {page.href === '/site-map' 
                                 ? (currentLanguage === 'pt-br' ? 'Você está aqui' : currentLanguage === 'en' ? 'You are here' : 'Estás aquí')
                                 : (currentLanguage === 'pt-br' ? 'Visitar página →' : currentLanguage === 'en' ? 'Visit page →' : 'Visitar página →')
@@ -167,12 +167,12 @@ export default async function Sitemap() {
           </div>
 
           {/* Footer Info */}
-          <Card className="bg-white/10 backdrop-blur-sm border-white/20 mt-8">
-            <CardContent className="p-6 text-center">
-              <h3 className="text-xl font-semibold text-white mb-4">
+          <Card className="bg-background/80 backdrop-blur-sm border-border mt-8">
+            <CardContent className="p-6 text-center text-muted-foreground">
+              <h3 className="text-xl font-semibold  mb-4">
                 {currentLanguage === 'pt-br' ? 'Sobre o Branmo CRM' : currentLanguage === 'en' ? 'About Branmo CRM' : 'Acerca de Branmo CRM'}
               </h3>
-              <p className="text-white/80 mb-4 max-w-2xl mx-auto">
+              <p className="/80 mb-4 max-w-2xl mx-auto">
                 {currentLanguage === 'pt-br'
                   ? 'Estamos desenvolvendo uma plataforma de CRM baseada no WhatsApp com automação por IA para transformar conversas em vendas.'
                   : currentLanguage === 'en'
@@ -189,7 +189,7 @@ export default async function Sitemap() {
                 </Link>
                 <Link
                   href="/about"
-                  className="border border-white text-white px-6 py-2 rounded-lg hover:bg-white/10 transition-colors font-medium"
+                  className="border border-white  px-6 py-2 rounded-lg hover:bg-white/10 transition-colors font-medium"
                 >
                   {t.navigation.about}
                 </Link>

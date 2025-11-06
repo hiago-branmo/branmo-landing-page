@@ -17,6 +17,11 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  viewport: {
+    width: "device-width",
+    initialScale: 1,
+    maximumScale: 5,
+  },
   title: "Branmo CRM - WhatsApp AI Sales Automation Platform",
   description: "Transform WhatsApp into a sales machine with AI automation. Convert conversations to leads, manage sales funnels. Get early access!",
   keywords: ["WhatsApp CRM", "Sales Automation", "AI", "Lead Generation", "Sales Funnel", "WhatsApp Business", "CRM Software"],
