@@ -1,0 +1,295 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Organization {
+  id                  String               @id @default(cuid())
+  name                String
+  domain              String?              @unique
+  billingPlan         String?              @default("free")
+  isActive            Boolean              @default(true)
+  cnpj                String
+  responsibleName     String
+  responsibleEmail    String
+  responsiblePhone    String
+  createdAt           DateTime             @default(now())
+  updatedAt           DateTime             @updatedAt
+  AgentConfig         AgentConfig[]
+  contacts            Contact[]
+  Conversation        Conversation[]
+  leads               Lead[]
+  messages            Message[]
+  pipelines           Pipeline[]
+  users               User[]
+  whatsappConnections WhatsappConnection[]
+
+  @@index([id])
+}
+
+model User {
+  id             String           @id @default(cuid())
+  email          String
+  hashedPassword String
+  name           String?
+  lastLogin      DateTime?
+  organizationId String
+  role           Role             @default(AGENT)
+  permissions    Json?
+  status         MembershipStatus @default(PENDING)
+  invitedById    String?
+  createdAt      DateTime         @default(now())
+  updatedAt      DateTime         @updatedAt
+  leads          Lead[]           @relation("LeadOwner")
+  activities     LeadActivity[]   @relation("LeadActivityActor")
+  sentMessages   Message[]        @relation("UserSentMessages")
+  invitedBy      User?            @relation("UserInvitations", fields: [invitedById], references: [id])
+  invitedUsers   User[]           @relation("UserInvitations")
+  organization   Organization     @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+
+  @@unique([organizationId, email])
+  @@index([organizationId, role])
+}
+
+model Pipeline {
+  id             String          @id @default(cuid())
+  organizationId String
+  name           String
+  description    String?
+  isDefault      Boolean         @default(false)
+  color          String?         @default("#2563eb")
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+  leads          Lead[]
+  organization   Organization    @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  stages         PipelineStage[]
+
+  @@unique([organizationId, name])
+  @@index([organizationId])
+}
+
+model PipelineStage {
+  id          String   @id @default(cuid())
+  pipelineId  String
+  name        String
+  order       Int
+  probability Float?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  leads       Lead[]
+  pipeline    Pipeline @relation(fields: [pipelineId], references: [id], onDelete: Cascade)
+
+  @@unique([pipelineId, order])
+  @@index([pipelineId, name])
+  @@index([pipelineId, order])
+}
+
+model Lead {
+  id             String         @id @default(cuid())
+  organizationId String
+  pipelineId     String
+  stageId        String
+  ownerId        String?
+  name           String
+  email          String?
+  phone          String?
+  status         LeadStatus     @default(OPEN)
+  source         LeadSource?
+  details        Json?
+  createdAt      DateTime       @default(now())
+  updatedAt      DateTime       @updatedAt
+  value          Decimal?       @db.Decimal(10, 2)
+  organization   Organization   @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  owner          User?          @relation("LeadOwner", fields: [ownerId], references: [id])
+  pipeline       Pipeline       @relation(fields: [pipelineId], references: [id], onDelete: Cascade)
+  stage          PipelineStage  @relation(fields: [stageId], references: [id])
+  activities     LeadActivity[]
+
+  @@index([organizationId, createdAt])
+  @@index([pipelineId, stageId])
+  @@index([ownerId])
+  @@index([status])
+  @@index([stageId, updatedAt])
+  @@index([organizationId, stageId])
+}
+
+model LeadActivity {
+  id        String           @id @default(cuid())
+  leadId    String
+  actorId   String?
+  type      LeadActivityType
+  payload   Json?
+  createdAt DateTime         @default(now())
+  actor     User?            @relation("LeadActivityActor", fields: [actorId], references: [id])
+  lead      Lead             @relation(fields: [leadId], references: [id], onDelete: Cascade)
+
+  @@index([leadId, createdAt])
+}
+
+model Message {
+  id             String             @id @default(cuid())
+  organizationId String
+  connectionId   String
+  contactId      String
+  conversationId String?
+  text           String
+  receivedAt     DateTime           @default(now())
+  fromAgent      Boolean            @default(false)
+  direction      MessageDirection
+  senderId       String?
+  deliveredAt    DateTime?
+  errorMessage   String?
+  readAt         DateTime?
+  sentAt         DateTime?
+  status         MessageStatus      @default(PENDING)
+  connection     WhatsappConnection @relation(fields: [connectionId], references: [id], onDelete: Cascade)
+  contact        Contact            @relation(fields: [contactId], references: [id], onDelete: Cascade)
+  Conversation   Conversation?      @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+  organization   Organization       @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  sender         User?              @relation("UserSentMessages", fields: [senderId], references: [id], onDelete: Cascade)
+
+  @@index([organizationId])
+  @@index([contactId])
+  @@index([conversationId, receivedAt])
+}
+
+model AuthState {
+  sessionId          String
+  creds              String?
+  keys               String?
+  updatedAt          DateTime             @updatedAt
+  createdAt          DateTime             @default(now())
+  id                 String               @id @default(cuid())
+  WhatsappConnection WhatsappConnection[]
+}
+
+model WhatsappConnection {
+  organizationId String
+  status         ConnectionStatus
+  lastQR         String
+  lastQRAt       DateTime
+  createdAt      DateTime         @default(now())
+  updatedAt      DateTime         @updatedAt
+  lastError      String?
+  assignedNode   String?
+  heartbeatAt    DateTime?
+  authStateId    String?
+  id             String           @id @default(cuid())
+  Conversation   Conversation[]
+  messages       Message[]
+  authState      AuthState?       @relation(fields: [authStateId], references: [id])
+  organization   Organization     @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+
+  @@index([organizationId])
+}
+
+model Contact {
+  id             String         @id @default(cuid())
+  organizationId String
+  phone          String
+  name           String?
+  profilePic     String?
+  whatsappNumber String
+  organization   Organization   @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  Conversation   Conversation[]
+  messages       Message[]
+
+  @@unique([organizationId, phone])
+}
+
+model AgentConfig {
+  id             String                 @id
+  organizationId String
+  name           String
+  config         Json
+  embedding      Unsupported("vector")?
+  active         Boolean                @default(true)
+  createdAt      DateTime               @default(now())
+  updatedAt      DateTime
+  Organization   Organization           @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+
+  @@index([organizationId])
+}
+
+model Conversation {
+  id                 String             @id
+  organizationId     String
+  connectionId       String
+  contactId          String
+  lastMessageAt      DateTime?
+  unreadCount        Int                @default(0)
+  WhatsappConnection WhatsappConnection @relation(fields: [connectionId], references: [id], onDelete: Cascade)
+  Contact            Contact            @relation(fields: [contactId], references: [id], onDelete: Cascade)
+  Organization       Organization       @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  Message            Message[]
+
+  @@unique([organizationId, connectionId, contactId])
+  @@index([organizationId])
+}
+
+enum Role {
+  OWNER
+  ADMIN
+  MANAGER
+  AGENT
+  VIEWER
+}
+
+enum MembershipStatus {
+  PENDING
+  ACTIVE
+  SUSPENDED
+}
+
+enum LeadStatus {
+  OPEN
+  WON
+  LOST
+  ARCHIVED
+}
+
+enum LeadSource {
+  WEBSITE
+  REFERRAL
+  IMPORT
+}
+
+enum LeadActivityType {
+  CREATE
+  UPDATE
+  STAGE_CHANGE
+  NOTE
+  CALL
+}
+
+enum MessageDirection {
+  inbound
+  outbound
+}
+
+enum ConnectionStatus {
+  CONNECTED
+  DISCONNECTED
+  PENDING
+  ERROR
+}
+
+enum MessageStatus {
+  PENDING
+  SENT
+  DELIVERED
+  READ
+  FAILED
+}
+
+model SiteLead {
+  id        String   @id @default(cuid())
+  name      String?
+  email     String
+  message   String?
+  createdAt DateTime @default(now())
+}

@@ -38,23 +38,20 @@ export function EmailCapture({ translations, language }: EmailCaptureProps) {
     setStatus("loading");
     
     try {
-      // Simulate API call - replace with your actual email capture service
-      const response = await fetch("/api/subscribe", {
+      // Chama a nova API para salvar no model SiteLead
+      const response = await fetch("/api/sitelead", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
           email: data.email,
-          language: language,
-          source: "landing_page",
         }),
       });
 
       if (response.ok) {
         setStatus("success");
         reset();
-        
         // Track successful email signup
         if (typeof window !== "undefined" && window.gtag) {
           window.gtag("event", "email_signup", {
