@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { Language, translations } from "@/lib/i18n";
 
 interface FooterProps {
@@ -32,10 +33,13 @@ export function Footer({ language }: FooterProps) {
           {/* Brand Column */}
           <div className="lg:col-span-2">
             <Link href="/" className="inline-block mb-4 hover:opacity-90 transition-opacity">
-              <img 
-                src="/branmo-banner.svg" 
-                alt="Branmo CRM" 
+              <Image
+                src="/branmo-banner.svg"
+                alt="Branmo CRM"
+                width={120}
+                height={40}
                 className="h-10 w-auto"
+                priority
               />
             </Link>
             <p className="text-muted-foreground mb-6 max-w-md">

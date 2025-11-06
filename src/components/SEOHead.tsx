@@ -1,7 +1,7 @@
 "use client";
 
 import Head from "next/head";
-import { Language, translations } from "@/lib/i18n";
+import { Language } from "@/lib/i18n";
 import { generateStructuredData } from "@/lib/structured-data";
 
 interface SEOHeadProps {
@@ -9,7 +9,6 @@ interface SEOHeadProps {
 }
 
 export function SEOHead({ language }: SEOHeadProps) {
-  const t = translations[language];
   const structuredData = generateStructuredData(language);
   
   const hreflangMap = {

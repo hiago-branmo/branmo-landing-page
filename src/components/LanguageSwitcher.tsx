@@ -24,8 +24,10 @@ export function LanguageSwitcher({
       window.gtag("event", "language_change", {
         event_category: "engagement",
         event_label: "language_switch",
-        from_language: currentLanguage,
-        to_language: newLanguage,
+        custom_parameters: {
+          from_language: currentLanguage,
+          to_language: newLanguage,
+        },
       });
     }
     
@@ -53,7 +55,5 @@ export function LanguageSwitcher({
 
 // Extend Window type for gtag
 declare global {
-  interface Window {
-    gtag: (command: string, targetId: string, config?: any) => void;
-  }
+  // interface Window já está declarada em outro local do projeto, não precisa duplicar aqui
 }

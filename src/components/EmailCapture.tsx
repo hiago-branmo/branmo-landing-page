@@ -64,7 +64,7 @@ export function EmailCapture({ translations, language }: EmailCaptureProps) {
       } else {
         setStatus("error");
       }
-    } catch (error) {
+    } catch {
       setStatus("error");
     }
   };

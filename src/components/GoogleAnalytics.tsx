@@ -30,7 +30,7 @@ export function GoogleAnalytics({ measurementId }: GoogleAnalyticsProps) {
 
 // Hook para tracking de eventos
 export function useAnalytics() {
-  const trackEvent = (eventName: string, parameters?: Record<string, any>) => {
+  const trackEvent = (eventName: string, parameters?: Record<string, unknown>) => {
     if (typeof window !== "undefined" && window.gtag) {
       window.gtag("event", eventName, parameters);
     }
@@ -58,11 +58,4 @@ export function useAnalytics() {
     trackEmailSignup,
     trackLanguageSwitch,
   };
-}
-
-// Extend Window type for gtag
-declare global {
-  interface Window {
-    gtag: (command: string, targetId: string, config?: any) => void;
-  }
 }

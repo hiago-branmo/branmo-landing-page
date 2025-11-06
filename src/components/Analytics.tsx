@@ -54,12 +54,11 @@ export function MetaPixel() {
 
 // Hook for tracking custom events
 export function useAnalytics() {
-  const trackEvent = (eventName: string, parameters?: Record<string, any>) => {
+  const trackEvent = (eventName: string, parameters?: Record<string, unknown>) => {
     // Google Analytics
     if (typeof window !== "undefined" && window.gtag) {
       window.gtag("event", eventName, parameters);
     }
-    
     // Meta Pixel
     if (typeof window !== "undefined" && window.fbq) {
       window.fbq("track", "CustomEvent", {
@@ -71,8 +70,10 @@ export function useAnalytics() {
 
   const trackPageView = (url: string) => {
     if (typeof window !== "undefined" && window.gtag) {
-      window.gtag("config", process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID!, {
-        page_path: url,
+      window.gtag("event", "page_view", {
+        custom_parameters: {
+          page_location: url,
+        },
       });
     }
   };
@@ -132,7 +133,8 @@ export function useAnalytics() {
 // Extend Window types
 declare global {
   interface Window {
-    gtag: (command: string, targetId: string, config?: any) => void;
-    fbq: (command: string, eventName: string, parameters?: any) => void;
+    gtag: (...args: any[]) => void;  // eslint-disable-line @typescript-eslint/no-explicit-any
+    fbq: (...args: any[]) => void; // eslint-disable-line @typescript-eslint/no-explicit-any
+    dataLayer: any[];  // eslint-disable-line @typescript-eslint/no-explicit-any
   }
 }

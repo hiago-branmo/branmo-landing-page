@@ -1,4 +1,5 @@
 import { MessageSquare, Bot, Zap, TrendingUp, Users, BarChart3, Mail } from "lucide-react";
+import Image from "next/image";
 import { EmailCapture } from "@/components/EmailCapture";
 import { SEOHead } from "@/components/SEOHead";
 import { Card, CardContent } from "@/components/ui/card";
@@ -55,10 +56,13 @@ export default async function Home() {
             <div className="max-w-4xl mx-auto">
               {/* Logo destacado */}
               <div className="mb-12 flex justify-center">
-                <img 
-                  src="/branmo-banner.svg" 
-                  alt="Branmo CRM" 
+                <Image
+                  src="/branmo-banner.svg"
+                  alt="Branmo CRM"
+                  width={320}
+                  height={160}
                   className="h-24 md:h-32 lg:h-40 w-auto hover:scale-105 transition-transform duration-300 filter drop-shadow-2xl"
+                  priority
                 />
               </div>
               

@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { Mail, MessageSquare, MapPin } from 'lucide-react';
+import {  MessageSquare, MapPin } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { cookies } from 'next/headers';
 import { Language, translations } from '@/lib/i18n';

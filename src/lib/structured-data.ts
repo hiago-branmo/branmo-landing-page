@@ -4,7 +4,7 @@ export function generateStructuredData(language: Language, page?: string) {
   const t = translations[language];
   const baseUrl = "https://branmo.app";
   
-  const baseGraph: any[] = [
+  const baseGraph: Record<string, unknown>[] = [
     // Organization
     {
       "@type": "Organization",
@@ -125,7 +125,18 @@ export function generateStructuredData(language: Language, page?: string) {
       "url": baseUrl,
       "name": t.seo.title,
       "description": t.seo.description,
-      "inLanguage": language === "pt-br" ? "pt-BR" : language === "es" ? "es-ES" : "en-US"
+      "inLanguage": language === "pt-br" ? "pt-BR" : language === "es" ? "es-ES" : "en-US",
+      "publisher": {
+        "@id": `${baseUrl}/#organization`
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": `${baseUrl}/search?q={search_term_string}`
+        },
+        "query-input": "required name=search_term_string"
+      }
     });
 
     // FAQ Schema

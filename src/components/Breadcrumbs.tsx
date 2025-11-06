@@ -55,7 +55,7 @@ function generateBreadcrumbsFromPath(pathname: string): BreadcrumbItem[] {
   ];
 
   let currentPath = '';
-  segments.forEach((segment, index) => {
+  segments.forEach((segment) => {
     currentPath += `/${segment}`;
     const label = formatSegmentLabel(segment);
     breadcrumbs.push({

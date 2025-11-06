@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { cookies } from 'next/headers';
 import { Language, translations } from '@/lib/i18n';
 import { Card, CardContent } from '@/components/ui/card';
-import { Home, Info, Phone, Shield, FileText, Globe } from 'lucide-react';
+import { Home, Info, Phone, Shield, Globe } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Mapa do Site - Branmo CRM',

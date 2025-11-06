@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
@@ -35,15 +36,21 @@ export function NavigationServer({ currentLanguage }: NavigationServerProps) {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center hover:opacity-90 transition-opacity">
-            <img 
-              src="/branmo-banner.svg" 
-              alt="Branmo CRM" 
+            <Image
+              src="/branmo-banner.svg"
+              alt="Branmo CRM"
+              width={96}
+              height={32}
               className="hidden sm:block h-8 w-auto"
+              priority
             />
-            <img 
-              src="/branmo-icon.png" 
-              alt="Branmo" 
+            <Image
+              src="/branmo-icon.png"
+              alt="Branmo"
+              width={32}
+              height={32}
               className="sm:hidden h-8 w-8"
+              priority
             />
           </Link>
 
